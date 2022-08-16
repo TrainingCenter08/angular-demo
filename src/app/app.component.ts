@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-demo';
+  title:string = 'angular-demo';
+  user = {
+    "name" : "Phanupong", 
+    "imageUrl" : "https://fakeimg.pl/250x100/"
+  };
+  color = 'red';
+
+  log(){
+    console.log('Button Click!');
+  }
 }

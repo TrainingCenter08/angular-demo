@@ -1,0 +1,36 @@
+<div>
+    <input type="text" [(ngModel)]="searchText">
+    <div>
+        Filter By: {{searchText}}
+    </div>
+</div>
+<table class="table table-striped" *ngIf="products.length">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Code</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>
+                <button type="button" class="btn btn-primary" (click)="toggleImage()">
+                    {{(isShowImage)? 'Hide' : 'Show'}}
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of filteredProduct">
+            <td [ngStyle]="getFontSize(p)">{{p.productName}}</td>
+            <td>{{p.productCode | lowercase | toSpace }}</td>
+            <td [ngClass]="getPriceLevel(p)">{{p.price | number:'2.2-2'}}</td>
+            <td>{{p.starRating}}</td>
+            <td>
+                <img *ngIf="isShowImage" [src]="p.imageUrl"
+                     [alt]="p.description"
+                     [style.width.px]="imageWith"
+                     [style.Margin.px]="imageMargin" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="alert alert-warning" *ngIf="products.length == 0">Can't find any product</div>
