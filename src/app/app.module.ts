@@ -16,6 +16,8 @@ import { route } from './routes';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { ContentComponent } from './content.component';
 import { ProtectRouteGuard } from './protect-route.guard';
+import { ProductService } from './products/product.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,10 @@ import { ProtectRouteGuard } from './protect-route.guard';
     BrowserModule,
     FormsModule,
     FontAwesomeModule,
+    HttpClientModule,
     RouterModule.forRoot(route, { useHash: false })
   ],
-  providers: [ProtectRouteGuard],
+  providers: [{provide: ProductService, useClass: ProductService}, ProtectRouteGuard],
   bootstrap: [NavbarComponent, ContentComponent, FooterComponent]
 })
 export class AppModule { }
