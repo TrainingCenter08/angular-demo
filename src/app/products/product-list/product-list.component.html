@@ -21,7 +21,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let p of filteredProduct; let i = index">
-            <td [ngStyle]="getFontSize(p)">{{p.productName}}</td>
+            <td [ngStyle]="getFontSize(p)">
+                <a [routerLink]="['/products', p.productId]">
+                    {{p.productName}}
+                </a>
+            </td>
             <td>{{p.productCode | lowercase | toSpace }}</td>
             <td [ngClass]="getPriceLevel(p)">{{p.price | number:'2.2-2'}}</td>
             <td>
@@ -30,7 +34,7 @@
                 (onRating)="onRating($event, i)"></star-rating>
             </td>
             <td>
-                <button (click)="vote()">Vote</button>
+                <button (click)="vote(i)">Vote</button>
             </td>
             <td>
                 <img *ngIf="isShowImage" [src]="p.imageUrl"

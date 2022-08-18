@@ -9,6 +9,12 @@ import { FooterComponent } from './footer/footer.component';
 import { ConvertToSpacePipe } from './convert-to-space.pipe';
 import { StarComponent } from './shared/star.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeComponent } from './home.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { RouterModule } from '@angular/router';
+import { route } from './routes';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { ContentComponent } from './content.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +23,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NavbarComponent,
     FooterComponent,
     ConvertToSpacePipe,
-    StarComponent
+    StarComponent,
+    HomeComponent,
+    ProductDetailComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule.forRoot(route, { useHash: false })
   ],
   providers: [],
-  bootstrap: [NavbarComponent, ProductListComponent, FooterComponent]
+  bootstrap: [NavbarComponent, ContentComponent, FooterComponent]
 })
 export class AppModule { }
