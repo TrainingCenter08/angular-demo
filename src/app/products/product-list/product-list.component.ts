@@ -1,4 +1,5 @@
-import { Component, importProvidersFrom, OnInit } from '@angular/core';
+import { Component, importProvidersFrom, OnInit, ViewChild } from '@angular/core';
+import { StarComponent } from 'src/app/shared/star.component';
 import { IProduct } from '../product';
 
 @Component({
@@ -65,7 +66,13 @@ export class ProductListComponent {
   isShowImage = true;
 
   filteredProduct: IProduct[] = this.products;
+
+  @ViewChild(StarComponent) child: StarComponent = new StarComponent();
   
+  vote(){
+    this.child.ratingClicked();
+  }
+
   private _searchText: string = '';
   get searchText():string {
     return this._searchText;
@@ -100,6 +107,10 @@ export class ProductListComponent {
     if(p.productName.length > 8)
       style['font-size'] = '10px';
     return style;
+  }
+
+  onRating(newStarRating: number, i: number){
+    this.products[i].starRating = newStarRating;
   }
 
 }

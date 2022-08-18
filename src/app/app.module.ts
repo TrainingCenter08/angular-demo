@@ -7,6 +7,8 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ConvertToSpacePipe } from './convert-to-space.pipe';
+import { StarComponent } from './shared/star.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ConvertToSpacePipe } from './convert-to-space.pipe';
     ProductListComponent,
     NavbarComponent,
     FooterComponent,
-    ConvertToSpacePipe
+    ConvertToSpacePipe,
+    StarComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [NavbarComponent, ProductListComponent, FooterComponent]

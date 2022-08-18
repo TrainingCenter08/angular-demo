@@ -11,6 +11,7 @@
             <th>Product Code</th>
             <th>Price</th>
             <th>Rating</th>
+            <th>Action</th>
             <th>
                 <button type="button" class="btn btn-primary" (click)="toggleImage()">
                     {{(isShowImage)? 'Hide' : 'Show'}}
@@ -19,11 +20,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of filteredProduct">
+        <tr *ngFor="let p of filteredProduct; let i = index">
             <td [ngStyle]="getFontSize(p)">{{p.productName}}</td>
             <td>{{p.productCode | lowercase | toSpace }}</td>
             <td [ngClass]="getPriceLevel(p)">{{p.price | number:'2.2-2'}}</td>
-            <td>{{p.starRating}}</td>
+            <td>
+                {{p.starRating | number:'1.2-2'}}
+                <star-rating [rating]="p.starRating" 
+                (onRating)="onRating($event, i)"></star-rating>
+            </td>
+            <td>
+                <button (click)="vote()">Vote</button>
+            </td>
             <td>
                 <img *ngIf="isShowImage" [src]="p.imageUrl"
                      [alt]="p.description"
