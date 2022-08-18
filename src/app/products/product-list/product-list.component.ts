@@ -1,4 +1,4 @@
-import { Component, importProvidersFrom, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, importProvidersFrom, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { StarComponent } from 'src/app/shared/star.component';
 import { IProduct } from '../product';
 
@@ -67,10 +67,11 @@ export class ProductListComponent {
 
   filteredProduct: IProduct[] = this.products;
 
-  @ViewChild(StarComponent) child: StarComponent = new StarComponent();
-  
-  vote(){
-    this.child.ratingClicked();
+  @ViewChildren(StarComponent) 
+  children!: QueryList<StarComponent>;
+
+  vote(i: number){
+    this.children.get(i)?.ratingClicked();
   }
 
   private _searchText: string = '';
