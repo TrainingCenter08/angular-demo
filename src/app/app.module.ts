@@ -18,6 +18,7 @@ import { ContentComponent } from './content.component';
 import { ProtectRouteGuard } from './protect-route.guard';
 import { ProductService } from './products/product.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NewProductComponent } from './products/new-product.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     StarComponent,
     HomeComponent,
     ProductDetailComponent,
-    ContentComponent
+    ContentComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@
     <div>
         Filter By: {{searchText}}
     </div>
+    <button [routerLink]="['/products/new']">New Product</button>
 </div>
 <table class="table table-striped" *ngIf="products.length">
     <thead>
