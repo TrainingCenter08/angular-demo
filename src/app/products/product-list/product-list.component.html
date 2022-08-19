@@ -3,6 +3,7 @@
     <div>
         Filter By: {{searchText}}
     </div>
+    <a [routerLink]="['/products/new']" class="btn btn-primary">New Product</a>
 </div>
 <table class="table table-striped" *ngIf="products.length">
     <thead>
@@ -22,7 +23,7 @@
     <tbody>
         <tr *ngFor="let p of filteredProduct; let i = index">
             <td [ngStyle]="getFontSize(p)">
-                <a [routerLink]="['/products', p.productId]">
+                <a [routerLink]="['/products', p.id]">
                     {{p.productName}}
                 </a>
             </td>

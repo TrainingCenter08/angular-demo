@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { StarComponent } from 'src/app/shared/star.component';
 
 import { ProductListComponent } from './product-list.component';
 
@@ -8,7 +9,7 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ]
+      declarations: [ ProductListComponent, StarComponent ]
     })
     .compileComponents();
 
@@ -20,4 +21,8 @@ describe('ProductListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should plus number', ()=>{
+    expect(component.add()).toBe(2);
+  })
 });

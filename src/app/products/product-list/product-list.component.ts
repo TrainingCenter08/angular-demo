@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, importProvidersFrom, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { StarComponent } from 'src/app/shared/star.component';
 import { IProduct } from '../product';
 import { ProductService } from '../product.service';
@@ -55,7 +55,6 @@ export class ProductListComponent implements OnInit {
   toggleImage(){
     this.isShowImage = !this.isShowImage;
   }
-
 
   getPriceLevel(p: IProduct) : object{
     let cssClass = {'high-price': false, 'low-price': false};

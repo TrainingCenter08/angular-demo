@@ -1,6 +1,7 @@
-  { "products": [
+{
+  "products": [
     {
-      "id":1,
+      "id": 1,
       "productId": 1,
       "productName": "Leaf Rake",
       "productCode": "GDN-0011",
@@ -11,7 +12,7 @@
       "imageUrl": "assets/images/leaf_rake.png"
     },
     {
-      "id":2,
+      "id": 2,
       "productId": 2,
       "productName": "Garden Cart",
       "productCode": "GDN-0023",
@@ -22,7 +23,7 @@
       "imageUrl": "assets/images/garden_cart.png"
     },
     {
-      "id":5,
+      "id": 5,
       "productId": 5,
       "productName": "Hammer",
       "productCode": "TBX-0048",
@@ -33,7 +34,7 @@
       "imageUrl": "assets/images/hammer.png"
     },
     {
-      "id":8,
+      "id": 8,
       "productId": 8,
       "productName": "Saw",
       "productCode": "TBX-0022",
@@ -44,7 +45,7 @@
       "imageUrl": "assets/images/saw.png"
     },
     {
-      "id":10,
+      "id": 10,
       "productId": 10,
       "productName": "Video Game Controller",
       "productCode": "GMG-0042",
@@ -53,5 +54,13 @@
       "price": 35.95,
       "starRating": 4.6,
       "imageUrl": "assets/images/xbox-controller.png"
+    },
+    {
+      "productName": "test",
+      "productCode": "ABC-123",
+      "price": 10,
+      "starRating": "2",
+      "id": 11
     }
-  ]}
+  ]
+}
