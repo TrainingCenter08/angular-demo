@@ -1,6 +1,6 @@
 <div class="container">
     <h3>Add new product</h3>
-    <div class="alert alert-success" *ngIf="addProductSuccess">
+    <div class="alert alert-success" *ngIf="addProductSuccess && productResponse">
         Already added product id <a [routerLink]="['/products', productResponse.id]">{{productResponse.id}}</a>
     </div>
     <form (ngSubmit)="save()" #frmNewProduct="ngForm">
