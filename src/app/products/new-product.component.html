@@ -1,0 +1,63 @@
+<div class="container">
+    <h3>Add new product</h3>
+    <div class="alert alert-success" *ngIf="addProductSuccess && productResponse">
+        Already added product id <a [routerLink]="['/products', productResponse.id]">{{productResponse.id}}</a>
+    </div>
+    <form (ngSubmit)="save()" #frmNewProduct="ngForm">
+        <div class="form-group" >
+            <label class="control-label">Product Name</label>
+            <input type="text" class="form-control" name="productName"
+                    required
+                    minlength="3"
+                   [(ngModel)]="newProduct.productName"
+                   #txtProductName="ngModel"
+                   [ngClass]="{'is-invalid': txtProductName.invalid && txtProductName.dirty }" >
+            <div class="alert alert-danger" *ngIf="txtProductName.invalid && txtProductName.dirty">
+                Product Name is required, and must be at least 3 characters.
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label">Product Code</label>
+            <input type="text" class="form-control" name="productCode"
+                    required
+                    pattern="[A-Z]{3}-\d{1,3}"
+                    placeholder="example: ABC-123 (Required)"
+                   [(ngModel)]="newProduct.productCode"
+                   #txtProductCode="ngModel"
+                   [ngClass]="{'is-invalid': txtProductCode.invalid && txtProductCode.dirty }" >
+            <div class="alert alert-danger" *ngIf="txtProductCode.invalid && txtProductCode.dirty">
+                Product Code is required, and must be correct format.
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label">Price</label>
+            <input type="number" class="form-control" name="price" value="0"
+                    required
+                    pattern="[0-9]+[0-9.]*"
+                   [(ngModel)]="newProduct.price"
+                   #txtPrice="ngModel"
+                   [ngClass]="{'is-invalid': txtPrice.invalid && txtPrice.dirty }" >
+            <div class="alert alert-danger" *ngIf="txtPrice.invalid && txtPrice.dirty">
+                Price is required, and must be an number.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Star Rating: </label>
+            <select name="starRating" class="form-control" required
+                    [(ngModel)]="newProduct.starRating"
+                    #ddStarRating="ngModel">
+                <option [ngValue]="0">--- No Rating ---</option>
+                <option *ngFor="let i of [1,2,3,4,5]" [value]="i">
+                    {{i}}
+                </option>
+            </select>
+            <div class="alert alert-danger" *ngIf="ddStarRating.invalid && ddStarRating.touched">
+                You must select star rating.
+            </div>
+        </div>
+        <button class="btn btn-primary" 
+                [disabled]="frmNewProduct.invalid"
+                type="submit">Ok</button>
+    </form>
+</div>
