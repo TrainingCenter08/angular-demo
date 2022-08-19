@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { IProduct } from '../product';
 import { ProductService } from '../product.service';
 
@@ -9,9 +8,8 @@ import { ProductService } from '../product.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
+export class ProductDetailComponent implements OnInit {
 
-  sub: Subscription | undefined;
   selectedProduct: IProduct | undefined;
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -23,10 +21,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         .subscribe(
           (product: IProduct) => this.selectedProduct = product
         );
-  }
-
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe();
   }
 
   back(): void{

@@ -1,19 +1,10 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { NavService } from '../navbar/nav.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css'],
-  providers: [NavService]
+  styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit{
+export class FooterComponent{
   menuSelectedItem = "Home"
-
-  constructor(private navService: NavService){}
-
-  ngOnInit(): void {
-    this.navService.getMenuItemAsync()
-            .subscribe(menuItem => this.menuSelectedItem = menuItem);
-  }
 }

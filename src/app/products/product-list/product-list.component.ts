@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, importProvidersFrom, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { AfterViewInit, Component, importProvidersFrom, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { StarComponent } from 'src/app/shared/star.component';
 import { IProduct } from '../product';
 import { ProductService } from '../product.service';
@@ -10,7 +9,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-list.component.css'],
   providers: []
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit {
   
   products: IProduct[] = [];
 
@@ -23,22 +22,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
   @ViewChildren(StarComponent) 
   children!: QueryList<StarComponent>;
 
-  sub: Subscription | undefined;
-
   constructor(private productService: ProductService){}
-  
   ngOnInit(): void {
-    this.sub = this.productService.getAllProducts()
+    this.productService.getAllProducts()
         .subscribe(
           (products) => {
             this.products = products;
             this.filteredProduct = this.products;
           }
         );
-  }
-
-  ngOnDestroy(): void {
-    this.sub?.unsubscribe();
   }
 
   vote(i: number){
